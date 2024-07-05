@@ -6,7 +6,6 @@
 
     
     const toast = useToast();
-
     const loginForm = reactive({
         username: '',
         password: '',
@@ -19,7 +18,7 @@
         }
         console.log(login)
         try {
-        const response = await axios.post(`http://10.10.8.25:8002/api/login`, login);
+        const response = await axios.post(`${import.meta.env.VITE_API_KEY}/login`, login);
             // to do toast
             console.log(response.data.message)
             toast.success(response.data.message);
@@ -37,6 +36,10 @@
 <template>
     <section class="bg-gray-50 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+                   
+            </a>
             <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
                 <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
                     <h1 class="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
@@ -59,9 +62,9 @@
                         <button type="submit" style="background-color: #15803d;" class="w-full text-black hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:hover:bg-green-700 dark:focus:ring-green-800">
                             Login
                         </button>                        
-                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                        <!-- <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
-                        </p>
+                        </p> -->
                     </form>
                 </div>
             </div>
